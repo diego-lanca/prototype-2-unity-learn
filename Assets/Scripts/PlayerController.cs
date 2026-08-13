@@ -4,14 +4,17 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     public InputAction moveAction;
+    public InputAction fireAction;
     public float speed = 10.0f;
     public float xRange = 10.0f;
+    public GameObject projectilePrefab;
     private Vector2 moveInput;
     
 
     void OnEnable()
     {
         moveAction.Enable();
+        fireAction.Enable();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -35,5 +38,10 @@ public class PlayerController : MonoBehaviour
 
         moveInput = moveAction.ReadValue<Vector2>();
         transform.Translate(moveInput.x * speed * Time.deltaTime * Vector3.right);
+
+        if (fireAction.triggered)
+        {
+            Instantiate(projectilePrefab, transform.position, projectilePrefab.transform.rotation);
+        }
     }
 }
