@@ -13,6 +13,7 @@ public class MoveForward : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Move o objeto para frente a uma velocidade constante.
         transform.Translate(speed * Time.deltaTime * Vector3.forward);
     }
 }
