@@ -5,8 +5,9 @@ public class PlayerController : MonoBehaviour
 {
     public InputAction moveAction;
     public InputAction fireAction;
-    public float speed = 10.0f;
-    public float xRange = 10.0f;
+    public float speed = 15.0f;
+    public float xRange = 20.0f;
+    public float topBound = 15.0f;
     public GameObject projectilePrefab;
     private Vector2 moveInput;
     
@@ -36,10 +37,19 @@ public class PlayerController : MonoBehaviour
         {
             transform.position = new Vector3(xRange, transform.position.y, transform.position.z);
         }
+        if (transform.position.z < 0)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, 0);
+        }
+        else if (transform.position.z > topBound)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, topBound);
+        }
 
         // Lê o input do jogador para movimentação horizontal.
         moveInput = moveAction.ReadValue<Vector2>();
         transform.Translate(moveInput.x * speed * Time.deltaTime * Vector3.right);
+        transform.Translate(moveInput.y * speed * Time.deltaTime * Vector3.forward);
 
         // Dispara o projétil caso o botão de disparo seja pressionado.
         if (fireAction.triggered)

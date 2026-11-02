@@ -384,7 +384,7 @@ GameObject:
   - component: {fileID: 683447940478549232}
   m_Layer: 0
   m_Name: Animal_Doe_01
-  m_TagString: Untagged
+  m_TagString: Respawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -494,6 +494,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 428308b9f6663e345b2249abfbc93272, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DetectCollisions
+  playerObject: {fileID: 0}
 --- !u!1 &4575838767862189755
 GameObject:
   m_ObjectHideFlags: 0
